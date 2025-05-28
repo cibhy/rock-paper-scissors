@@ -5,11 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <button class="js-buttons rock">Rock</button>
-  <button class="js-buttons paper">Paper</button>
-  <button class="js-buttons scissors">Scissors</button>
+  <div class="container">
+    <h1>ROCK PAPER SCISSORS</h1>
+    <div class="button">
+      <button class="js-buttons rock">
+        <img src="./images/rock-emoji.png" alt="">
+      </button>
+      <button class="js-buttons paper">
+        <img src="./images/paper-emoji.png" alt="">
+      </button>
+      <button class="js-buttons scissors">
+        <img src="./images/scissors-emoji.png" alt="">
+      </button>
+    </div>
+    <div class="score">
+      <img src="./images/user-image.svg" class="img-score" alt=""><span class="player-score"></span>
+      <span class="score-seperator">--</span>
+      <img src="./images/computer-image.svg" class="img-score" alt=""><span class="computer-score"></span>
+    </div>
+    <div class="reset">
+      <button onclick="
+      resetGame();" class="reset-button">
+      Reset
+    </button>
+    </div>
+    <p class="result"></p>
+    <p class="final-result"></p>
+
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

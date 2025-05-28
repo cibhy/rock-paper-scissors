@@ -14,31 +14,53 @@ function getPlayerChoice(){
   document.querySelector('.paper').addEventListener('click', () => playGame('paper'));
   document.querySelector('.scissors').addEventListener('click', () => playGame('scissors'));
 }
-let result = '';
-let score = '';
+
 let playerScore = 0;
 let computerScore = 0;
+let gameOver = false;
+
+const result = document.querySelector('.result');
+const playerScoreDisplay = document.querySelector('.player-score');
+const computerScoreDisplay = document.querySelector('.computer-score');
+const finalResult = document.querySelector('.final-result');
 
 function playGame(playerChoice){
+  if (gameOver) return;
   let computerChoice = getComputerChoice();
   if (computerChoice === playerChoice) {
-      result = console.log(`Tie. Both chose ${computerChoice}`) ;
-      score = console.log(`Player ${playerScore} - Computer ${computerScore}`);
+      playerScoreDisplay.innerHTML = `${playerScore}`;
+      computerScoreDisplay.innerHTML = `${computerScore}`
+      result.innerHTML += `Tie. Both chose ${computerChoice}. <br>` ;
 
     } else if (playerChoice === 'rock' && computerChoice === 'scissors' ||
       playerChoice === 'paper' && computerChoice === 'rock' ||
       playerChoice === 'scissors' && computerChoice === 'paper') {
       playerScore++;
-      result = console.log(`You Win. Player chose ${playerChoice} and Computer chose ${computerChoice}`);
-      score = console.log(`Player ${playerScore} - Computer ${computerScore}`);
-      
+      playerScoreDisplay.innerHTML = `${playerScore}`;
+      computerScoreDisplay.innerHTML = `${computerScore}`
+      result.innerHTML += `You Win. Player chose ${playerChoice} and Computer chose ${computerChoice}. <br>`;
+
     } else {
       computerScore++;
-      result = console.log(`You Lose. Player chose ${playerChoice} and Computer chose ${computerChoice}`);
-      score = console.log(`Player ${playerScore} - Computer ${computerScore}`);
+      playerScoreDisplay.innerHTML = `${playerScore}`;
+      computerScoreDisplay.innerHTML = `${computerScore}`
+      result.innerHTML += `You Lose. Player chose ${playerChoice} and Computer chose ${computerChoice}. <br>`;
   }
 
+  if (playerScore === 5 || computerScore === 5){
+    gameOver = true;
+    finalResult.innerHTML += playerScore === 5 ? `You Won. Congratulation !!!` : `You Lost. Better luck next time !`;
+  }
 
 }
 
 getPlayerChoice();
+
+function resetGame(){
+  playerScore = 0;
+  computerScore = 0;
+  playerScoreDisplay.innerHTML = `${playerScore}`;
+  computerScoreDisplay.innerHTML = `${computerScore}`
+  result.innerHTML =''
+  gameOver = false;
+}

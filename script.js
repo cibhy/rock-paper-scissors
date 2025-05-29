@@ -60,7 +60,8 @@ function resetGame(){
   playerScore = 0;
   computerScore = 0;
   playerScoreDisplay.innerHTML = `${playerScore}`;
-  computerScoreDisplay.innerHTML = `${computerScore}`
-  result.innerHTML =''
+  computerScoreDisplay.innerHTML = `${computerScore}`;
+  result.innerHTML ='';
+  finalResult.innerHTML = '';
   gameOver = false;
 }
